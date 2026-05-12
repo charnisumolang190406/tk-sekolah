@@ -26,11 +26,24 @@ exports.getMuridById = async (req, res) => {
 // CREATE murid
 exports.createMurid = async (req, res) => {
   try {
+    const { nama, kelas } = req.body;
+
+    if (!nama || !kelas) {
+      return res.status(400).json({
+        message: "Nama dan kelas wajib diisi"
+      });
+    }
+
     const data = await prisma.murid.create({
-      data: req.body,
+      data: {
+        nama,
+        kelas
+      }
     });
+
     res.json(data);
   } catch (err) {
+    console.log(err);
     res.status(500).json({ error: err.message });
   }
 };
