@@ -5,41 +5,87 @@ export default function AdminMurid() {
   const [nama, setNama] = useState("");
   const [kelas, setKelas] = useState("");
   const [data, setData] = useState([]);
+  const [editId, setEditId] = useState(null);
 
   const load = async () => {
-    const res = await api.get("/murid");
-    setData(res.data);
+    try {
+      const res = await api.get("/murid");
+      setData(res.data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {
     load();
   }, []);
 
-  const tambah = async (e) => {
+  const submit = async (e) => {
     e.preventDefault();
 
-    await api.post("/murid", {
-      nama,
-      kelas,
-    });
+    try {
+      if (editId) {
+        await api.put(`/murid/${editId}`, {
+          nama,
+          kelas,
+        });
 
-    setNama("");
-    setKelas("");
-    load();
+        alert("Data murid berhasil diupdate");
+      } else {
+        await api.post("/murid", {
+          nama,
+          kelas,
+        });
+
+        alert("Murid berhasil ditambahkan");
+      }
+
+      setNama("");
+      setKelas("");
+      setEditId(null);
+
+      load();
+    } catch (err) {
+      console.log(err);
+      alert("Terjadi error");
+    }
+  };
+
+  const editData = (m) => {
+    setNama(m.nama);
+    setKelas(m.kelas);
+    setEditId(m.id);
+  };
+
+  const hapus = async (id) => {
+    const konfirmasi = window.confirm(
+      "Yakin ingin menghapus murid?"
+    );
+
+    if (!konfirmasi) return;
+
+    try {
+      await api.delete(`/murid/${id}`);
+
+      alert("Murid berhasil dihapus");
+
+      load();
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   return (
     <div style={styles.page}>
-
       <h1 style={styles.title}>👶 Admin Murid</h1>
 
-      {/* FORM */}
-      <form onSubmit={tambah} style={styles.form}>
+      <form onSubmit={submit} style={styles.form}>
         <input
           style={styles.input}
           placeholder="Nama murid"
           value={nama}
           onChange={(e) => setNama(e.target.value)}
+          required
         />
 
         <input
@@ -47,26 +93,43 @@ export default function AdminMurid() {
           placeholder="Kelas"
           value={kelas}
           onChange={(e) => setKelas(e.target.value)}
+          required
         />
 
-        <button style={styles.button}>+ Tambah Murid</button>
+        <button style={styles.button}>
+          {editId ? "Update Murid" : "+ Tambah Murid"}
+        </button>
       </form>
 
-      {/* LIST */}
       <div style={styles.grid}>
         {data.map((m) => (
           <div key={m.id} style={styles.card}>
             <h3>👶 {m.nama}</h3>
+
             <p>🏫 Kelas: {m.kelas}</p>
+
+            <div style={styles.action}>
+              <button
+                style={styles.editBtn}
+                onClick={() => editData(m)}
+              >
+                ✏ Edit
+              </button>
+
+              <button
+                style={styles.deleteBtn}
+                onClick={() => hapus(m.id)}
+              >
+                🗑 Hapus
+              </button>
+            </div>
           </div>
         ))}
       </div>
-
     </div>
   );
 }
 
-/* ================= STYLE ================= */
 const styles = {
   page: {
     padding: "30px",
@@ -93,7 +156,6 @@ const styles = {
     padding: "10px",
     borderRadius: "8px",
     border: "1px solid #ccc",
-    outline: "none",
   },
 
   button: {
@@ -108,7 +170,8 @@ const styles = {
 
   grid: {
     display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))",
+    gridTemplateColumns:
+      "repeat(auto-fit, minmax(220px, 1fr))",
     gap: "15px",
   },
 
@@ -118,6 +181,30 @@ const styles = {
     borderRadius: "12px",
     textAlign: "center",
     boxShadow: "0 3px 12px rgba(0,0,0,0.1)",
-    transition: "0.3s",
+  },
+
+  action: {
+    display: "flex",
+    justifyContent: "center",
+    gap: "10px",
+    marginTop: "10px",
+  },
+
+  editBtn: {
+    background: "#ff9800",
+    color: "white",
+    border: "none",
+    padding: "8px 12px",
+    borderRadius: "8px",
+    cursor: "pointer",
+  },
+
+  deleteBtn: {
+    background: "#e53935",
+    color: "white",
+    border: "none",
+    padding: "8px 12px",
+    borderRadius: "8px",
+    cursor: "pointer",
   },
 };
