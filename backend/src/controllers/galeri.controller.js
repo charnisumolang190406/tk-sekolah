@@ -1,22 +1,23 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
-// GET semua foto (PUBLIC)
+// GET semua foto
 exports.getGaleri = async (req, res) => {
-  const data = await prisma.galeri.findMany();
-  res.json(data);
+  try {
+    const data = await prisma.galeri.findMany();
+    res.json(data);
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 };
 
-// TAMBAH FOTO (ADMIN)
+// CREATE FOTO (CLOUDINARY)
 exports.createGaleri = async (req, res) => {
   try {
-    console.log("BODY:", req.body);
-    console.log("FILE:", req.file); // 👈 ini penting
-
     const data = await prisma.galeri.create({
       data: {
         judul: req.body.judul,
-        foto: req.file.filename,
+        foto: req.file.path, // 👈 INI PENTING (URL CLOUDINARY)
       },
     });
 
@@ -27,11 +28,15 @@ exports.createGaleri = async (req, res) => {
   }
 };
 
-// HAPUS FOTO (ADMIN)
+// DELETE
 exports.deleteGaleri = async (req, res) => {
-  await prisma.galeri.delete({
-    where: { id: Number(req.params.id) },
-  });
+  try {
+    await prisma.galeri.delete({
+      where: { id: Number(req.params.id) },
+    });
 
-  res.json({ message: "deleted" });
+    res.json({ message: "deleted" });
+  } catch (err) {
+    res.status(500).json({ error: err.message });
+  }
 };

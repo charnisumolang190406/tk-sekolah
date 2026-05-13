@@ -6,8 +6,9 @@ const upload = require("../middleware/upload");
 // PUBLIC
 router.get("/", galeri.getGaleri);
 
-// ADMIN UPLOAD FOTO
-router.post("/", upload.single("foto"), galeri.createGaleri);
-router.delete("/:id", galeri.deleteGaleri);
+// ADMIN UPLOAD FOTO (CLOUDINARY)
+router.post("/", auth, upload.single("foto"), galeri.createGaleri);
+
+router.delete("/:id", auth, galeri.deleteGaleri);
 
 module.exports = router;

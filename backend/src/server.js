@@ -21,7 +21,6 @@ app.use("/api/auth", authRoutes);
 app.use("/api/murid", muridRoutes);
 app.use("/api/guru", guruRoutes);
 app.use("/api/galeri", require("./routes/galeri.routes"));
-app.use("/uploads", express.static("uploads"));
 app.use("/api/pengumuman", require("./routes/pengumuman.routes"));
 
 app.get("/", (req, res) => {
