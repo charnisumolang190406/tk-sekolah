@@ -29,7 +29,6 @@ export default function AdminGaleri() {
       await api.post("/galeri", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
-          "Content-Type": "multipart/form-data",
         },
       });
 
