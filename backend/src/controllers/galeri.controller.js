@@ -10,13 +10,8 @@ exports.getGaleri = async (req, res) => {
 // TAMBAH FOTO (ADMIN)
 exports.createGaleri = async (req, res) => {
   try {
-    console.log("FILE:", req.file); // cek
-
-    if (!req.file) {
-      return res.status(400).json({
-        message: "File tidak terkirim"
-      });
-    }
+    console.log("BODY:", req.body);
+    console.log("FILE:", req.file); // 👈 ini penting
 
     const data = await prisma.galeri.create({
       data: {
