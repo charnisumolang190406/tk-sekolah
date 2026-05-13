@@ -7,8 +7,10 @@ const upload = require("../middleware/upload");
 router.get("/", galeri.getGaleri);
 
 // ADMIN UPLOAD FOTO (CLOUDINARY)
-router.post("/", auth, upload.single("foto"), galeri.createGaleri);
-
+router.post("/", (req,res,next)=>{
+  console.log("MASUK ROUTE");
+  next();
+}, auth, upload.single("foto"), galeri.createGaleri);
 router.delete("/:id", auth, galeri.deleteGaleri);
 
 module.exports = router;
