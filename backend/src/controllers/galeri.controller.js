@@ -14,31 +14,33 @@ exports.getGaleri = async (req, res) => {
 // CREATE (CLOUDINARY)
 exports.createGaleri = async (req, res) => {
   try {
+    console.log("=== REQUEST MASUK ===");
     console.log("BODY:", req.body);
     console.log("FILE:", req.file);
 
     if (!req.file) {
       return res.status(400).json({
-        message: "File tidak masuk (cek FormData / multer / field foto)",
+        message: "req.file kosong",
       });
     }
 
-    const fotoUrl = req.file.path || req.file.secure_url;
+    console.log("PATH:", req.file.path);
 
     const data = await prisma.galeri.create({
       data: {
         judul: req.body.judul,
-        foto: fotoUrl,
+        foto: req.file.path,
       },
     });
 
-    return res.json(data);
-  } catch (err) {
-    console.log("ERROR CREATE GALERI:", err);
+    res.json(data);
 
-    return res.status(500).json({
+  } catch (err) {
+    console.log("=== ERROR ===");
+    console.log(err);
+
+    res.status(500).json({
       error: err.message,
-      detail: err,
     });
   }
 };
