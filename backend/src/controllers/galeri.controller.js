@@ -1,7 +1,7 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
-// GET semua foto
+// GET
 exports.getGaleri = async (req, res) => {
   try {
     const data = await prisma.galeri.findMany();
@@ -11,13 +11,20 @@ exports.getGaleri = async (req, res) => {
   }
 };
 
-// CREATE FOTO (CLOUDINARY)
+// CREATE (CLOUDINARY)
 exports.createGaleri = async (req, res) => {
   try {
+    console.log("BODY:", req.body);
+    console.log("FILE:", req.file);
+
+    if (!req.file) {
+      return res.status(400).json({ message: "File tidak masuk" });
+    }
+
     const data = await prisma.galeri.create({
       data: {
         judul: req.body.judul,
-        foto: req.file.path, // 👈 INI PENTING (URL CLOUDINARY)
+        foto: req.file.path,
       },
     });
 
@@ -27,7 +34,6 @@ exports.createGaleri = async (req, res) => {
     res.status(500).json({ error: err.message });
   }
 };
-
 // DELETE
 exports.deleteGaleri = async (req, res) => {
   try {
