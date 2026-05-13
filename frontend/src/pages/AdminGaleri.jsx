@@ -110,7 +110,7 @@ export default function AdminGaleri() {
             }}
           >
             <img
-              src={`https://tk-sekolah-api.onrender.com/uploads/${g.foto}`}
+              src={g.foto}
               alt={g.judul}
               style={{
                 width: "100%",
