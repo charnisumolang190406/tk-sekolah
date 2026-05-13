@@ -7,8 +7,12 @@ export default function AdminGaleri() {
   const [data, setData] = useState([]);
 
   const load = async () => {
-    const res = await api.get("/galeri");
-    setData(res.data);
+    try {
+      const res = await api.get("/galeri");
+      setData(res.data);
+    } catch (err) {
+      console.log(err);
+    }
   };
 
   useEffect(() => {
@@ -19,8 +23,12 @@ export default function AdminGaleri() {
     e.preventDefault();
 
     try {
-      const formData = new FormData();
+      if (!foto) {
+        alert("Pilih foto dulu!");
+        return;
+      }
 
+      const formData = new FormData();
       formData.append("judul", judul);
       formData.append("foto", foto);
 
@@ -29,6 +37,7 @@ export default function AdminGaleri() {
       await api.post("/galeri", formData, {
         headers: {
           Authorization: `Bearer ${token}`,
+          "Content-Type": "multipart/form-data",
         },
       });
 
@@ -45,17 +54,19 @@ export default function AdminGaleri() {
   };
 
   const hapus = async (id) => {
-    const konfirmasi = window.confirm(
-      "Yakin ingin menghapus foto?"
-    );
-
+    const konfirmasi = window.confirm("Yakin ingin menghapus foto?");
     if (!konfirmasi) return;
 
     try {
-      await api.delete(`/galeri/${id}`);
+      const token = localStorage.getItem("token");
+
+      await api.delete(`/galeri/${id}`, {
+        headers: {
+          Authorization: `Bearer ${token}`,
+        },
+      });
 
       alert("Foto berhasil dihapus");
-
       load();
     } catch (err) {
       console.log(err);
@@ -83,32 +94,23 @@ export default function AdminGaleri() {
 
         <br /><br />
 
-        <button type="submit">
-          Upload
-        </button>
+        <button type="submit">Upload</button>
       </form>
 
       <hr />
 
-      <div
-        style={{
-          display: "grid",
-          gridTemplateColumns:
-            "repeat(auto-fit, minmax(220px, 1fr))",
-          gap: "20px",
-        }}
-      >
+      <div style={{
+        display: "grid",
+        gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
+        gap: "20px"
+      }}>
         {data.map((g) => (
-          <div
-            key={g.id}
-            style={{
-              background: "white",
-              padding: "15px",
-              borderRadius: "10px",
-              boxShadow:
-                "0 3px 10px rgba(0,0,0,0.1)",
-            }}
-          >
+          <div key={g.id} style={{
+            background: "white",
+            padding: "15px",
+            borderRadius: "10px",
+            boxShadow: "0 3px 10px rgba(0,0,0,0.1)"
+          }}>
             <img
               src={g.foto}
               alt={g.judul}
@@ -116,7 +118,7 @@ export default function AdminGaleri() {
                 width: "100%",
                 height: "180px",
                 objectFit: "cover",
-                borderRadius: "10px",
+                borderRadius: "10px"
               }}
             />
 
@@ -130,7 +132,7 @@ export default function AdminGaleri() {
                 border: "none",
                 padding: "8px 12px",
                 borderRadius: "8px",
-                cursor: "pointer",
+                cursor: "pointer"
               }}
             >
               🗑 Hapus
