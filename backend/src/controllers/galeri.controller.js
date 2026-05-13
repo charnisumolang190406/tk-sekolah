@@ -14,17 +14,14 @@ exports.getGaleri = async (req, res) => {
 // CREATE (CLOUDINARY)
 exports.createGaleri = async (req, res) => {
   try {
-    console.log("=== REQUEST MASUK ===");
-    console.log("BODY:", req.body);
-    console.log("FILE:", req.file);
+    console.log("REQ FILE:", req.file);
+    console.log("REQ BODY:", req.body);
 
     if (!req.file) {
       return res.status(400).json({
-        message: "req.file kosong",
+        message: "File tidak masuk",
       });
     }
-
-    console.log("PATH:", req.file.path);
 
     const data = await prisma.galeri.create({
       data: {
@@ -36,10 +33,12 @@ exports.createGaleri = async (req, res) => {
     res.json(data);
 
   } catch (err) {
-    console.log("=== ERROR ===");
+    console.log("=== ERROR GALERI ===");
     console.log(err);
+    console.log(err.message);
+    console.log(err.stack);
 
-    res.status(500).json({
+    return res.status(500).json({
       error: err.message,
     });
   }
