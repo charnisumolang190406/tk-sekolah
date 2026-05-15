@@ -6,33 +6,11 @@ const {
   deleteGaleri,
 } = require("../controllers/galeri.controller");
 
-const auth = require("../middleware/auth.middleware");
-const upload = require("../middleware/upload");
-
-// TEST
+// HAPUS middleware dulu buat test
 router.get("/", getGaleri);
 
-// DEBUG + CREATE
-router.post(
-  "/",
-  (req, res, next) => {
-    console.log("1 ROUTE OK");
-    next();
-  },
-  (req, res, next) => {
-    console.log("2 AUTH SKIP TEST");
-    next();
-  },
-  (req, res, next) => {
-    console.log("3 UPLOAD SKIP TEST");
-    next();
-  },
-  (req, res) => {
-    res.json({ message: "TEST OK" });
-  }
-);
+router.post("/", createGaleri);
 
-// DELETE
-router.delete("/:id", auth, deleteGaleri);
+router.delete("/:id", deleteGaleri);
 
 module.exports = router;
