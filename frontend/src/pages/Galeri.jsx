@@ -26,8 +26,10 @@ export default function Galeri() {
       <div className="grid">
         {data.map((item) => (
           <div key={item.id} className="card">
+            
             <img
-              src={`http://localhost:5000/uploads/${item.foto}`}
+              src={item.foto}
+
               alt="galeri"
             />
           </div>
