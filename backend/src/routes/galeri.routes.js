@@ -16,12 +16,20 @@ router.get("/", getGaleri);
 router.post(
   "/",
   (req, res, next) => {
-    console.log("MASUK ROUTE GALERI");
+    console.log("1 ROUTE OK");
     next();
   },
-  auth,
-  upload.single("foto"),
-  createGaleri
+  (req, res, next) => {
+    console.log("2 AUTH SKIP TEST");
+    next();
+  },
+  (req, res, next) => {
+    console.log("3 UPLOAD SKIP TEST");
+    next();
+  },
+  (req, res) => {
+    res.json({ message: "TEST OK" });
+  }
 );
 
 // DELETE
