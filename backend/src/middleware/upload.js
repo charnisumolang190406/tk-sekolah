@@ -1,15 +1,13 @@
 const cloudinary = require("../config/cloudinary");
-const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const multer = require("multer");
+const { CloudinaryStorage } = require("multer-storage-cloudinary");
 
 const storage = new CloudinaryStorage({
-  cloudinary: cloudinary,
-  params: async (req, file) => {
-    return {
-      folder: "tk-sekolah-galeri",
-      resource_type: "auto",
-    };
-  },
+  cloudinary,
+  params: async (req, file) => ({
+    folder: "tk-sekolah-galeri",
+    upload_preset: "tk_sekolah_unsigned",
+  }),
 });
 
 const upload = multer({
