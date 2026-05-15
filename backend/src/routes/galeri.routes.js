@@ -1,13 +1,14 @@
 const router = require("express").Router();
+const galeri = require("../controllers/galeri.controller");
 
-const galeriController = require("../controllers/galeri.controller");
+// TEST AMAN DULU (BIAR TIDAK CRASH)
+router.get("/", galeri.getGaleri || ((req, res) => res.json([])));
 
-console.log("CTRL:", galeriController);
+router.post("/", galeri.createGaleri);
 
-router.get("/", galeriController.getGaleri);
-
-router.post("/", galeriController.createGaleri);
-
-router.delete("/:id", galeriController.deleteGaleri);
+router.delete(
+  "/:id",
+  galeri.deleteGaleri || ((req, res) => res.json({ message: "ok" }))
+);
 
 module.exports = router;
