@@ -3,18 +3,21 @@ const galeri = require("../controllers/galeri.controller");
 const auth = require("../middleware/auth.middleware");
 const upload = require("../middleware/upload");
 
-// PUBLIC
+// TEST
 router.get("/", galeri.getGaleri);
 
-// ADMIN UPLOAD FOTO
+// DEBUG
 router.post(
   "/",
+  (req, res, next) => {
+    console.log("MASUK ROUTE GALERI");
+    next();
+  },
   auth,
   upload.single("foto"),
   galeri.createGaleri
 );
 
-// DELETE
 router.delete("/:id", auth, galeri.deleteGaleri);
 
 module.exports = router;
