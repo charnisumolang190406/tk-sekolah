@@ -6,12 +6,15 @@ exports.getGaleri = async (req, res) => {
   try {
     const data = await prisma.galeri.findMany();
     res.json(data);
+
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(500).json({
+      error: err.message
+    });
   }
 };
 
-// CREATE (CLOUDINARY)
+// CREATE
 exports.createGaleri = async (req, res) => {
   try {
     console.log("REQ FILE:", req.file);
@@ -35,10 +38,8 @@ exports.createGaleri = async (req, res) => {
   } catch (err) {
     console.log("=== ERROR GALERI ===");
     console.log(err);
-    console.log(err.message);
-    console.log(err.stack);
 
-    return res.status(500).json({
+    res.status(500).json({
       error: err.message,
     });
   }
@@ -48,11 +49,18 @@ exports.createGaleri = async (req, res) => {
 exports.deleteGaleri = async (req, res) => {
   try {
     await prisma.galeri.delete({
-      where: { id: Number(req.params.id) },
+      where: {
+        id: Number(req.params.id),
+      },
     });
 
-    res.json({ message: "deleted" });
+    res.json({
+      message: "deleted",
+    });
+
   } catch (err) {
-    res.status(500).json({ error: err.message });
+    res.status(500).json({
+      error: err.message,
+    });
   }
 };
