@@ -1,16 +1,13 @@
 const router = require("express").Router();
 
-const {
-  getGaleri,
-  createGaleri,
-  deleteGaleri,
-} = require("../controllers/galeri.controller");
+const galeriController = require("../controllers/galeri.controller");
 
-// HAPUS middleware dulu buat test
-router.get("/", getGaleri);
+console.log("CTRL:", galeriController);
 
-router.post("/", createGaleri);
+router.get("/", galeriController.getGaleri);
 
-router.delete("/:id", deleteGaleri);
+router.post("/", galeriController.createGaleri);
+
+router.delete("/:id", galeriController.deleteGaleri);
 
 module.exports = router;
