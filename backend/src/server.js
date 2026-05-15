@@ -1,17 +1,20 @@
-
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
-
 const fs = require("fs");
 
-if (!fs.existsSync("uploads")) {
-  fs.mkdirSync("uploads");
-}
 const app = express();
 
 app.use(cors());
 app.use(express.json());
+
+// serve uploads folder
+app.use("/uploads", express.static("uploads"));
+
+// auto create uploads folder
+if (!fs.existsSync("uploads")) {
+  fs.mkdirSync("uploads");
+}
 
 // ROUTES
 const muridRoutes = require("./routes/murid.routes");
@@ -28,24 +31,20 @@ app.get("/", (req, res) => {
   res.send("API TK Negeri Pembina Siau Timur aktif");
 });
 
-const PORT = process.env.PORT || 5000;
-
-app.listen(PORT, () => {
-  console.log(`Server jalan di port ${PORT}`);
-});
-
+// GLOBAL ERROR HANDLER
 app.use((err, req, res, next) => {
   console.log("===== GLOBAL ERROR =====");
-
   console.log(err);
-
-  console.log("MESSAGE:");
-  console.log(err.message);
-
-  console.log("STACK:");
-  console.log(err.stack);
+  console.log("MESSAGE:", err.message);
+  console.log("STACK:", err.stack);
 
   res.status(500).json({
     error: err.message,
   });
+});
+
+const PORT = process.env.PORT || 5000;
+
+app.listen(PORT, () => {
+  console.log(`Server jalan di port ${PORT}`);
 });
