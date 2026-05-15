@@ -10,4 +10,9 @@ console.log(process.env.CLOUD_NAME);
 console.log(process.env.CLOUD_API_KEY);
 console.log(process.env.CLOUD_API_SECRET);
 
+console.log("ENV CHECK:");
+console.log("CLOUD_NAME:", process.env.CLOUD_NAME);
+console.log("API_KEY:", process.env.CLOUD_API_KEY);
+console.log("SECRET:", process.env.CLOUD_API_SECRET);
+
 module.exports = cloudinary;
