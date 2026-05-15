@@ -1,5 +1,7 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
+const cloudinary = require("../config/cloudinary");
+const streamifier = require("streamifier");
 
 // GET
 exports.getGaleri = async (req, res) => {
@@ -9,7 +11,7 @@ exports.getGaleri = async (req, res) => {
 
   } catch (err) {
     res.status(500).json({
-      error: err.message
+      error: err.message,
     });
   }
 };
@@ -17,26 +19,43 @@ exports.getGaleri = async (req, res) => {
 // CREATE
 exports.createGaleri = async (req, res) => {
   try {
-    console.log("REQ FILE:", req.file);
-    console.log("REQ BODY:", req.body);
-
     if (!req.file) {
       return res.status(400).json({
-        message: "File tidak masuk",
+        message: "File tidak ada",
       });
     }
+
+    const streamUpload = () => {
+      return new Promise((resolve, reject) => {
+        const stream = cloudinary.uploader.upload_stream(
+          {
+            folder: "tk-sekolah-galeri",
+          },
+          (error, result) => {
+            if (result) {
+              resolve(result);
+            } else {
+              reject(error);
+            }
+          }
+        );
+
+        streamifier.createReadStream(req.file.buffer).pipe(stream);
+      });
+    };
+
+    const result = await streamUpload();
 
     const data = await prisma.galeri.create({
       data: {
         judul: req.body.judul,
-        foto: req.file.path,
+        foto: result.secure_url,
       },
     });
 
     res.json(data);
 
   } catch (err) {
-    console.log("=== ERROR GALERI ===");
     console.log(err);
 
     res.status(500).json({
