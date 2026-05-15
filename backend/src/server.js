@@ -6,7 +6,7 @@ const fs = require("fs");
 const app = express();
 
 // =====================
-// DEBUG CLOUDINARY ENV
+// DEBUG ENV
 // =====================
 console.log("CLOUD TEST:", {
   name: process.env.CLOUD_NAME,
@@ -20,13 +20,13 @@ console.log("CLOUD TEST:", {
 app.use(cors());
 app.use(express.json());
 
-// serve uploads folder
+// uploads folder
 app.use("/uploads", express.static("uploads"));
 
-// auto create uploads folder
+// create uploads folder if not exists
 if (!fs.existsSync("uploads")) {
   fs.mkdirSync("uploads");
-});
+}
 
 // =====================
 // ROUTES
