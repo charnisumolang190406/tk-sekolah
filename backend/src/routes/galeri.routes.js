@@ -1,14 +1,22 @@
 const router = require("express").Router();
 const galeri = require("../controllers/galeri.controller");
+const auth = require("../middleware/auth.middleware");
+const upload = require("../middleware/upload");
 
-// TEST AMAN DULU (BIAR TIDAK CRASH)
-router.get("/", galeri.getGaleri || ((req, res) => res.json([])));
+// DEBUG BIAR JELAS
+router.get("/", galeri.getGaleri);
 
-router.post("/", galeri.createGaleri);
-
-router.delete(
-  "/:id",
-  galeri.deleteGaleri || ((req, res) => res.json({ message: "ok" }))
+router.post(
+  "/",
+  (req, res, next) => {
+    console.log("➡️ MASUK ROUTE GALERI");
+    next();
+  },
+  auth,
+  upload.single("foto"),
+  galeri.createGaleri
 );
+
+router.delete("/:id", auth, galeri.deleteGaleri);
 
 module.exports = router;
