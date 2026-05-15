@@ -1,3 +1,4 @@
+
 const express = require("express");
 const cors = require("cors");
 require("dotenv").config();
@@ -34,7 +35,15 @@ app.listen(PORT, () => {
 });
 
 app.use((err, req, res, next) => {
-  console.log("GLOBAL ERROR:", err);
+  console.log("===== GLOBAL ERROR =====");
+
+  console.log(err);
+
+  console.log("MESSAGE:");
+  console.log(err.message);
+
+  console.log("STACK:");
+  console.log(err.stack);
 
   res.status(500).json({
     error: err.message,

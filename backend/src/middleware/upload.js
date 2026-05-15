@@ -3,20 +3,18 @@ const { CloudinaryStorage } = require("multer-storage-cloudinary");
 const multer = require("multer");
 
 const storage = new CloudinaryStorage({
-  cloudinary: cloudinary,
-  params: async (req, file) => {
-    return {
-      folder: "tk-sekolah-galeri",
-      resource_type: "image",
-      allowed_formats: ["jpg", "jpeg", "png"],
-    };
-  },
+  cloudinary,
+  params: async (req, file) => ({
+    folder: "tk-sekolah-galeri",
+    format: "jpg",
+    resource_type: "image",
+  }),
 });
 
 const upload = multer({
-  storage: storage,
+  storage,
   limits: {
-    fileSize: 2 * 1024 * 1024, // max 2MB
+    fileSize: 2 * 1024 * 1024,
   },
 });
 
