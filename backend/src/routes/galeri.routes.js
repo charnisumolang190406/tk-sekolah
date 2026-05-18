@@ -1,11 +1,13 @@
 const router = require("express").Router();
+
 const galeri = require("../controllers/galeri.controller");
 const auth = require("../middleware/auth.middleware");
 const upload = require("../middleware/upload");
 
-// DEBUG BIAR JELAS
+// GET
 router.get("/", galeri.getGaleri);
 
+// CREATE
 router.post(
   "/",
   (req, res, next) => {
@@ -17,6 +19,7 @@ router.post(
   galeri.createGaleri
 );
 
+// DELETE
 router.delete("/:id", auth, galeri.deleteGaleri);
 
 module.exports = router;

@@ -1,20 +1,29 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
+
 const cloudinary = require("../config/cloudinary");
 const streamifier = require("streamifier");
 
-// GET GALERI
+// GET
 exports.getGaleri = async (req, res) => {
   try {
-    const data = await prisma.galeri.findMany();
+    const data = await prisma.galeri.findMany({
+      orderBy: {
+        id: "desc",
+      },
+    });
+
     res.json(data);
   } catch (err) {
     console.log(err);
-    res.status(500).json({ error: err.message });
+
+    res.status(500).json({
+      error: err.message,
+    });
   }
 };
 
-// CREATE GALERI (UPLOAD CLOUDINARY AMAN RENDER)
+// CREATE
 exports.createGaleri = async (req, res) => {
   try {
     console.log("➡️ MASUK CREATE GALERI");
@@ -22,24 +31,36 @@ exports.createGaleri = async (req, res) => {
     console.log("FILE:", req.file);
 
     if (!req.file) {
-      return res.status(400).json({ message: "File tidak ditemukan" });
+      return res.status(400).json({
+        message: "File tidak ada",
+      });
     }
 
-    const uploadToCloudinary = () => {
+    const streamUpload = () => {
       return new Promise((resolve, reject) => {
         const stream = cloudinary.uploader.upload_stream(
-          { folder: "tk-sekolah-galeri" },
+          {
+            folder: "tk-sekolah-galeri",
+          },
           (error, result) => {
-            if (result) resolve(result);
-            else reject(error);
+            if (error) {
+              console.log("❌ CLOUDINARY ERROR:", error);
+              reject(error);
+            } else {
+              resolve(result);
+            }
           }
         );
 
-        streamifier.createReadStream(req.file.buffer).pipe(stream);
+        streamifier
+          .createReadStream(req.file.buffer)
+          .pipe(stream);
       });
     };
 
-    const result = await uploadToCloudinary();
+    const result = await streamUpload();
+
+    console.log("✅ CLOUDINARY SUCCESS:", result.secure_url);
 
     const data = await prisma.galeri.create({
       data: {
@@ -49,13 +70,17 @@ exports.createGaleri = async (req, res) => {
     });
 
     res.json(data);
+
   } catch (err) {
     console.log("❌ ERROR:", err);
-    res.status(500).json({ error: err.message });
+
+    res.status(500).json({
+      error: err.message,
+    });
   }
 };
 
-// DELETE GALERI
+// DELETE
 exports.deleteGaleri = async (req, res) => {
   try {
     await prisma.galeri.delete({
@@ -64,9 +89,15 @@ exports.deleteGaleri = async (req, res) => {
       },
     });
 
-    res.json({ message: "deleted" });
+    res.json({
+      message: "deleted",
+    });
+
   } catch (err) {
     console.log(err);
-    res.status(500).json({ error: err.message });
+
+    res.status(500).json({
+      error: err.message,
+    });
   }
 };
