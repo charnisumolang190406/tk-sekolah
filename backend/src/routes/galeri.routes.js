@@ -4,6 +4,9 @@ const galeri = require("../controllers/galeri.controller");
 const auth = require("../middleware/auth.middleware");
 const upload = require("../middleware/upload");
 
+console.log("AUTH:", auth);
+console.log("UPLOAD:", upload);
+
 router.get("/", galeri.getGaleri);
 
 router.post(
