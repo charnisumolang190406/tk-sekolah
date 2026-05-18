@@ -1,3 +1,7 @@
+require("dotenv").config({
+  path: __dirname + "/../../.env",
+});
+
 const cloudinary = require("cloudinary").v2;
 
 console.log("CLOUD TEST:", {
