@@ -30,9 +30,8 @@ export default function Login() {
   return (
     <div className="loginPage">
 
-      {/* KIRI — branding */}
       <div className="loginLeft">
-        <img src="/logo-tk.png" alt="Logo TK" className="loginLogo" />
+        <img src="/logo-tk.png.jpeg" alt="Logo TK" className="loginLogo" />
         <h1>TK Negeri Pembina<br />Siau Timur</h1>
         <p>Sistem Informasi Sekolah Digital</p>
         <div className="loginLeftInfo">
@@ -42,7 +41,6 @@ export default function Login() {
         </div>
       </div>
 
-      {/* KANAN — form */}
       <div className="loginRight">
         <div className="loginBox">
           <div className="loginHeader">
@@ -51,11 +49,7 @@ export default function Login() {
             <p>Masuk ke panel administrasi sekolah</p>
           </div>
 
-          {error && (
-            <div className="loginError">
-              ⚠️ {error}
-            </div>
-          )}
+          {error && <div className="loginError">⚠️ {error}</div>}
 
           <form onSubmit={handleLogin} className="loginForm">
             <div className="formGroup">
@@ -83,11 +77,7 @@ export default function Login() {
                   onChange={(e) => setPassword(e.target.value)}
                   required
                 />
-                <button
-                  type="button"
-                  className="togglePass"
-                  onClick={() => setShowPass(!showPass)}
-                >
+                <button type="button" className="togglePass" onClick={() => setShowPass(!showPass)}>
                   {showPass ? "🙈" : "👁️"}
                 </button>
               </div>
@@ -98,9 +88,7 @@ export default function Login() {
             </button>
           </form>
 
-          <p className="loginFooter">
-            © 2025 TK Negeri Pembina Siau Timur
-          </p>
+          <p className="loginFooter">© 2025 TK Negeri Pembina Siau Timur</p>
         </div>
       </div>
 
