@@ -1,103 +1,328 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 .home {
   font-family: "Poppins", sans-serif;
   background: #f4fff4;
   min-height: 100vh;
 }
 
-/* HERO SECTION */
+/* ── HERO ── */
 .hero {
-  background: linear-gradient(135deg, #4CAF50, #81C784);
+  background: #2e7d32;
   color: white;
   text-align: center;
-  padding: 80px 20px;
-  border-radius: 0 0 40px 40px;
-  box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+  padding: 60px 24px 72px;
+  border-radius: 0 0 32px 32px;
+}
+
+.heroBadge {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.18);
+  color: white;
+  font-size: 12px;
+  padding: 5px 16px;
+  border-radius: 20px;
+  margin-bottom: 18px;
 }
 
 .hero h1 {
-  font-size: 34px;
-  margin-bottom: 10px;
+  font-size: 26px;
+  font-weight: 600;
+  line-height: 1.35;
+  margin-bottom: 12px;
 }
 
 .hero p {
-  font-size: 18px;
-  opacity: 0.9;
+  font-size: 13px;
+  opacity: 0.82;
+  line-height: 1.7;
+  margin-bottom: 28px;
 }
 
-/* BUTTON GROUP */
-.btn-group {
-  margin-top: 25px;
+.btnGroup {
   display: flex;
   justify-content: center;
   flex-wrap: wrap;
-  gap: 15px;
+  gap: 10px;
 }
 
 .btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
   background: white;
-  color: #4CAF50;
-  padding: 12px 18px;
-  border-radius: 12px;
+  color: #2e7d32;
+  padding: 9px 18px;
+  border-radius: 10px;
   text-decoration: none;
-  font-weight: bold;
-  transition: all 0.3s ease;
-  box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+  font-size: 13px;
+  font-weight: 600;
+  transition: background 0.15s;
 }
 
 .btn:hover {
-  transform: translateY(-5px) scale(1.05);
-  background: #f1f1f1;
+  background: #f1f8e9;
 }
 
-/* INFO SECTION */
-.info {
+.btnOutline {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: rgba(255, 255, 255, 0.15);
+  color: white;
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  padding: 9px 18px;
+  border-radius: 10px;
+  text-decoration: none;
+  font-size: 13px;
+  font-weight: 500;
+  transition: background 0.15s;
+}
+
+.btnOutline:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+/* ── SECTION ── */
+.section {
+  padding: 32px 24px;
+}
+
+.sectionLabel {
+  font-size: 11px;
+  font-weight: 600;
+  color: #43a047;
+  letter-spacing: 0.6px;
+  text-transform: uppercase;
+  margin-bottom: 4px;
+}
+
+.sectionTitle {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+}
+
+.divider {
+  height: 1px;
+  background: rgba(0, 0, 0, 0.06);
+  margin: 0 24px;
+}
+
+/* ── INFO SEKOLAH ── */
+.infoGrid {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 20px;
-
-  padding: 50px;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 12px;
 }
 
-/* CARD */
-.card {
+.infoCard {
   background: white;
-  padding: 25px;
-  border-radius: 18px;
-  text-align: center;
-
-  box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-  transition: 0.3s ease;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 14px;
+  padding: 16px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  transition: transform 0.2s;
 }
 
-.card h3 {
+.infoCard:hover {
+  transform: translateY(-3px);
+}
+
+.infoIcon {
+  font-size: 22px;
+  min-width: 32px;
+}
+
+.infoLabel {
+  font-size: 11px;
+  color: #43a047;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-bottom: 3px;
+}
+
+.infoValue {
+  font-size: 13px;
+  color: #333;
+  line-height: 1.5;
+}
+
+/* ── QUOTE ── */
+.quoteBox {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 16px;
+  padding: 24px;
+  position: relative;
+}
+
+.quoteIcon {
+  font-size: 40px;
+  color: #c8e6c9;
+  line-height: 1;
+  margin-bottom: 8px;
+}
+
+.quoteText {
+  font-size: 15px;
+  color: #1a1a1a;
+  line-height: 1.7;
+  font-style: italic;
   margin-bottom: 10px;
+}
+
+.quoteAuthor {
+  font-size: 13px;
+  color: #43a047;
+  font-weight: 600;
+  margin-bottom: 14px;
+}
+
+.refreshBtn {
+  font-size: 12px;
+  color: #43a047;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+
+.refreshBtn:hover {
   color: #2e7d32;
 }
 
-.card:hover {
-  transform: translateY(-8px);
-  box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+/* ── BUKU ── */
+.booksGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+  gap: 12px;
 }
 
-/* RESPONSIVE TABLET */
-@media (max-width: 900px) {
-  .info {
-    grid-template-columns: 1fr 1fr;
-  }
+.bookCard {
+  background: white;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 12px;
+  padding: 16px 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  transition: transform 0.2s;
 }
 
-/* RESPONSIVE HP */
+.bookCard:hover {
+  transform: translateY(-3px);
+}
+
+.bookEmoji {
+  font-size: 24px;
+  margin-bottom: 4px;
+}
+
+.bookTitle {
+  font-size: 13px;
+  font-weight: 600;
+  color: #1a1a1a;
+  line-height: 1.4;
+}
+
+.bookAuthor {
+  font-size: 12px;
+  color: #888;
+}
+
+.bookTag {
+  font-size: 11px;
+  color: #2e7d32;
+  font-weight: 600;
+  background: #e8f5e9;
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 20px;
+  margin-top: 4px;
+}
+
+/* ── FAKTA ── */
+.factBox {
+  background: #e8f5e9;
+  border-radius: 16px;
+  padding: 24px;
+  display: flex;
+  align-items: flex-start;
+  gap: 20px;
+}
+
+.factNum {
+  font-size: 38px;
+  font-weight: 700;
+  color: #2e7d32;
+  min-width: 80px;
+  line-height: 1;
+}
+
+.factContent {
+  flex: 1;
+}
+
+.factText {
+  font-size: 14px;
+  color: #1b5e20;
+  line-height: 1.6;
+  margin-bottom: 12px;
+}
+
+/* ── FOOTER INFO ── */
+.footerInfo {
+  background: #2e7d32;
+  color: rgba(255, 255, 255, 0.75);
+  text-align: center;
+  padding: 20px 24px;
+  font-size: 12px;
+  line-height: 1.6;
+  margin-top: 8px;
+}
+
+/* ── RESPONSIVE ── */
 @media (max-width: 600px) {
-  .info {
-    grid-template-columns: 1fr;
-    padding: 20px;
-  }
-
   .hero h1 {
-    font-size: 24px;
+    font-size: 20px;
   }
 
-  .hero p {
-    font-size: 14px;
+  .hero {
+    padding: 48px 20px 60px;
+  }
+
+  .section {
+    padding: 24px 16px;
+  }
+
+  .divider {
+    margin: 0 16px;
+  }
+
+  .factBox {
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .factNum {
+    font-size: 30px;
+    min-width: unset;
+  }
+
+  .infoGrid {
+    grid-template-columns: 1fr;
   }
 }
