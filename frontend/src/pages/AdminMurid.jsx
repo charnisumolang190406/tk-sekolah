@@ -22,14 +22,14 @@ export default function AdminMurid() {
     load();
   }, []);
 
-  // SUBMIT (CREATE / UPDATE)
+  // SUBMIT
   const submit = async (e) => {
     e.preventDefault();
 
     try {
       const payload = {
         nama,
-        umur: Number(umur), // penting: harus number
+        umur: Number(umur),
         kelas,
       };
 
@@ -41,7 +41,6 @@ export default function AdminMurid() {
         alert("Murid berhasil ditambahkan");
       }
 
-      // reset form
       setNama("");
       setUmur("");
       setKelas("");
@@ -64,12 +63,17 @@ export default function AdminMurid() {
 
   // DELETE
   const hapus = async (id) => {
-    const konfirmasi = window.confirm("Yakin ingin menghapus murid?");
+    const konfirmasi = window.confirm(
+      "Yakin ingin menghapus murid?"
+    );
+
     if (!konfirmasi) return;
 
     try {
       await api.delete(`/murid/${id}`);
+
       alert("Murid berhasil dihapus");
+
       load();
     } catch (err) {
       console.log("Delete error:", err);
@@ -78,8 +82,18 @@ export default function AdminMurid() {
 
   return (
     <div style={styles.page}>
-      <h1 style={styles.title}>👶 Admin Murid</h1>
+      {/* HEADER */}
+      <div style={styles.header}>
+        <h1 style={styles.title}>
+          Admin Murid
+        </h1>
 
+        <p style={styles.subtitle}>
+          Kelola data murid TK Sekolah
+        </p>
+      </div>
+
+      {/* FORM */}
       <form onSubmit={submit} style={styles.form}>
         <input
           style={styles.input}
@@ -107,24 +121,41 @@ export default function AdminMurid() {
         />
 
         <button style={styles.button}>
-          {editId ? "Update Murid" : "+ Tambah Murid"}
+          {editId
+            ? "Update Murid"
+            : "Tambah Murid"}
         </button>
       </form>
 
+      {/* LIST */}
       <div style={styles.grid}>
         {data.map((m) => (
           <div key={m.id} style={styles.card}>
-            <h3>👶 {m.nama}</h3>
-            <p>🎂 Umur: {m.umur}</p>
-            <p>🏫 Kelas: {m.kelas}</p>
+            <h3 style={styles.cardTitle}>
+              {m.nama}
+            </h3>
+
+            <p style={styles.cardText}>
+              Umur: {m.umur} Tahun
+            </p>
+
+            <p style={styles.cardText}>
+              Kelas: {m.kelas}
+            </p>
 
             <div style={styles.action}>
-              <button style={styles.editBtn} onClick={() => editData(m)}>
-                ✏ Edit
+              <button
+                style={styles.editBtn}
+                onClick={() => editData(m)}
+              >
+                Edit
               </button>
 
-              <button style={styles.deleteBtn} onClick={() => hapus(m.id)}>
-                🗑 Hapus
+              <button
+                style={styles.deleteBtn}
+                onClick={() => hapus(m.id)}
+              >
+                Hapus
               </button>
             </div>
           </div>
@@ -134,81 +165,124 @@ export default function AdminMurid() {
   );
 }
 
-// STYLE
+/* ================= STYLE ================= */
+
 const styles = {
   page: {
-    padding: "30px",
+    padding: "24px",
     background: "#f4fff4",
     minHeight: "100vh",
-    fontFamily: "Arial",
+    fontFamily: "Poppins, sans-serif",
+  },
+
+  header: {
+    marginBottom: "22px",
   },
 
   title: {
-    textAlign: "center",
-    color: "#2e7d32",
-    marginBottom: "20px",
+    fontSize: "24px",
+    fontWeight: "600",
+    color: "#1a1a1a",
+    marginBottom: "4px",
+  },
+
+  subtitle: {
+    fontSize: "13px",
+    color: "#666",
+    lineHeight: "1.6",
   },
 
   form: {
-    display: "flex",
-    gap: "10px",
-    justifyContent: "center",
-    flexWrap: "wrap",
-    marginBottom: "25px",
+    background: "white",
+    border: "1px solid rgba(0,0,0,0.06)",
+    borderRadius: "16px",
+    padding: "18px",
+    marginBottom: "24px",
+
+    display: "grid",
+    gridTemplateColumns:
+      "repeat(auto-fit,minmax(180px,1fr))",
+    gap: "12px",
   },
 
   input: {
-    padding: "10px",
-    borderRadius: "8px",
-    border: "1px solid #ccc",
+    padding: "11px 13px",
+    borderRadius: "10px",
+    border: "1px solid #dcdcdc",
+    fontSize: "13px",
+    outline: "none",
+    fontFamily: "Poppins, sans-serif",
+    background: "#fafafa",
   },
 
   button: {
-    background: "#4CAF50",
+    background: "#2e7d32",
     color: "white",
     border: "none",
-    padding: "10px 15px",
-    borderRadius: "8px",
+    borderRadius: "10px",
+    padding: "11px 16px",
+    fontSize: "13px",
+    fontWeight: "600",
     cursor: "pointer",
-    fontWeight: "bold",
+    transition: "0.2s",
   },
 
   grid: {
     display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-    gap: "15px",
+    gridTemplateColumns:
+      "repeat(auto-fit, minmax(220px,1fr))",
+    gap: "14px",
   },
 
   card: {
     background: "white",
-    padding: "20px",
-    borderRadius: "12px",
-    textAlign: "center",
-    boxShadow: "0 3px 12px rgba(0,0,0,0.1)",
+    border: "1px solid rgba(0,0,0,0.06)",
+    borderRadius: "14px",
+    padding: "18px",
+    transition: "0.2s",
+  },
+
+  cardTitle: {
+    fontSize: "15px",
+    fontWeight: "600",
+    color: "#1a1a1a",
+    marginBottom: "10px",
+  },
+
+  cardText: {
+    fontSize: "13px",
+    color: "#555",
+    marginBottom: "6px",
+    lineHeight: "1.5",
   },
 
   action: {
     display: "flex",
-    justifyContent: "center",
-    gap: "10px",
-    marginTop: "10px",
+    gap: "8px",
+    marginTop: "14px",
   },
 
   editBtn: {
-    background: "#ff9800",
-    color: "white",
+    flex: 1,
+    background: "#fff8e1",
+    color: "#ef6c00",
     border: "none",
-    padding: "8px 12px",
-    borderRadius: "8px",
+    borderRadius: "9px",
+    padding: "9px",
+    fontSize: "12px",
+    fontWeight: "600",
     cursor: "pointer",
   },
 
   deleteBtn: {
-    background: "#e53935",
-    color: "white",
+    flex: 1,
+    background: "#ffebee",
+    color: "#c62828",
     border: "none",
-    padding: "8px 12px",
-    borderRadius: "8px",
+    borderRadius: "9px",
+    padding: "9px",
+    fontSize: "12px",
+    fontWeight: "600",
     cursor: "pointer",
   },
 };
