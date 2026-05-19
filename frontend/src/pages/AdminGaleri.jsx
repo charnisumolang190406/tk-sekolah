@@ -84,7 +84,7 @@ export default function AdminGaleri() {
       {/* HEADER */}
       <div style={styles.header}>
         <h1 style={styles.title}>
-          🖼 Admin Galeri
+          Admin Galeri
         </h1>
 
         <p style={styles.subtitle}>
@@ -117,7 +117,7 @@ export default function AdminGaleri() {
         </div>
 
         <button type="submit" style={styles.button}>
-          ⬆ Upload Foto
+          Upload Foto
         </button>
       </form>
 
@@ -145,7 +145,7 @@ export default function AdminGaleri() {
                 onClick={() => hapus(g.id)}
                 style={styles.deleteBtn}
               >
-                🗑 Hapus
+                Hapus
               </button>
             </div>
           </div>
@@ -159,43 +159,45 @@ export default function AdminGaleri() {
 
 const styles = {
   page: {
-    padding: "30px",
+    padding: "24px",
     background: "#f4fff4",
     minHeight: "100vh",
     fontFamily: "Poppins, sans-serif",
   },
 
   header: {
-    marginBottom: "25px",
+    marginBottom: "22px",
   },
 
   title: {
     color: "#2e7d32",
-    fontSize: "32px",
-    marginBottom: "8px",
+    fontSize: "26px",
+    fontWeight: "600",
+    marginBottom: "6px",
   },
 
   subtitle: {
-    color: "#5f7161",
-    fontSize: "15px",
+    color: "#6b7280",
+    fontSize: "14px",
+    fontWeight: "400",
   },
 
   form: {
     background: "white",
-    padding: "25px",
-    borderRadius: "18px",
+    padding: "22px",
+    borderRadius: "16px",
     boxShadow:
-      "0 4px 15px rgba(0,0,0,0.06)",
-    marginBottom: "35px",
+      "0 2px 10px rgba(0,0,0,0.05)",
+    marginBottom: "30px",
 
     display: "flex",
     flexDirection: "column",
-    gap: "18px",
+    gap: "16px",
   },
 
   input: {
-    padding: "14px",
-    borderRadius: "12px",
+    padding: "13px",
+    borderRadius: "10px",
     border: "1px solid #d7e7d7",
     outline: "none",
     fontSize: "14px",
@@ -203,15 +205,17 @@ const styles = {
   },
 
   uploadBox: {
-    border: "2px dashed #c8e6c9",
-    borderRadius: "14px",
-    padding: "20px",
+    border: "1.5px dashed #c8e6c9",
+    borderRadius: "12px",
+    padding: "18px",
     background: "#fafefa",
   },
 
   fileInput: {
     width: "100%",
     cursor: "pointer",
+    fontSize: "13px",
+    color: "#555",
   },
 
   button: {
@@ -220,27 +224,26 @@ const styles = {
 
     color: "white",
     border: "none",
-    padding: "14px",
-    borderRadius: "12px",
-    fontSize: "15px",
-    fontWeight: "600",
+    padding: "12px",
+    borderRadius: "10px",
+    fontSize: "14px",
+    fontWeight: "500",
     cursor: "pointer",
   },
 
   grid: {
     display: "grid",
     gridTemplateColumns:
-      "repeat(auto-fit, minmax(250px, 1fr))",
-    gap: "22px",
+      "repeat(auto-fit, minmax(240px, 1fr))",
+    gap: "18px",
   },
 
   card: {
     background: "white",
-    borderRadius: "18px",
+    borderRadius: "16px",
     overflow: "hidden",
     boxShadow:
-      "0 4px 15px rgba(0,0,0,0.06)",
-    transition: "0.3s",
+      "0 2px 10px rgba(0,0,0,0.05)",
   },
 
   imageWrapper: {
@@ -249,29 +252,30 @@ const styles = {
 
   image: {
     width: "100%",
-    height: "220px",
+    height: "200px",
     objectFit: "cover",
-    transition: "0.4s",
   },
 
   cardContent: {
-    padding: "18px",
+    padding: "16px",
   },
 
   cardTitle: {
     color: "#1f2937",
-    fontSize: "18px",
-    marginBottom: "15px",
+    fontSize: "16px",
+    fontWeight: "600",
+    marginBottom: "12px",
   },
 
   deleteBtn: {
     width: "100%",
     background: "#ffebee",
-    color: "#d32f2f",
+    color: "#c62828",
     border: "none",
-    padding: "12px",
+    padding: "10px",
     borderRadius: "10px",
-    fontWeight: "600",
+    fontSize: "13px",
+    fontWeight: "500",
     cursor: "pointer",
   },
 };
