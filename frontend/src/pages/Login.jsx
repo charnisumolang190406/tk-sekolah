@@ -31,7 +31,7 @@ export default function Login() {
     <div className="loginPage">
 
       <div className="loginLeft">
-        <img src="/logo-tk.png.jpeg" alt="Logo TK" className="loginLogo" />
+         <img src="/logo-tk.png.jpeg" alt="Logo TK" className="loginLogo" />
         <h1>TK Negeri Pembina<br />Siau Timur</h1>
         <p>Sistem Informasi Sekolah Digital</p>
         <div className="loginLeftInfo">

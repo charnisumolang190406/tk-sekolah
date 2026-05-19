@@ -21,17 +21,32 @@ export default function Galeri() {
   return (
     <div className="galeri-container">
 
-      <h1 className="title">🖼️ Galeri Sekolah</h1>
+      <div className="header-galeri">
+        <h1>📸 Galeri Sekolah</h1>
+        <p>
+          Dokumentasi kegiatan, acara, dan aktivitas sekolah.
+        </p>
+      </div>
 
       <div className="grid">
         {data.map((item) => (
           <div key={item.id} className="card">
-            
-            <img
-              src={item.foto}
 
-              alt="galeri"
-            />
+            <div className="image-wrapper">
+              <img
+                src={item.foto}
+                alt={item.judul}
+              />
+            </div>
+
+            <div className="card-content">
+
+              <h3>
+                {item.judul || "Kegiatan Sekolah"}
+              </h3>
+
+            </div>
+
           </div>
         ))}
       </div>

@@ -1,53 +1,98 @@
 .galeri-container {
-  padding: 30px;
-  background: #f4fff4;
   min-height: 100vh;
-  font-family: Arial;
+  padding: 40px 20px;
+  background: linear-gradient(to bottom, #f3fff4, #eaffea);
+  font-family: "Poppins", sans-serif;
 }
 
-.title {
+/* HEADER */
+.header-galeri {
   text-align: center;
-  color: #2e7d32;
-  margin-bottom: 25px;
+  margin-bottom: 40px;
 }
 
-/* GRID RESPONSIVE */
+.header-galeri h1 {
+  color: #1b5e20;
+  font-size: 2.3rem;
+  margin-bottom: 10px;
+}
+
+.header-galeri p {
+  color: #555;
+  font-size: 15px;
+}
+
+/* GRID */
 .grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
 }
 
 /* CARD */
 .card {
-  overflow: hidden;
-  border-radius: 14px;
-  box-shadow: 0 3px 12px rgba(0,0,0,0.12);
   background: white;
-  transition: 0.3s ease;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 5px 18px rgba(0,0,0,0.08);
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 10px 24px rgba(0,0,0,0.15);
 }
 
 /* IMAGE */
-.card img {
-  width: 100%;
-  height: 220px;
-  object-fit: cover;
-  transition: 0.3s ease;
+.image-wrapper {
+  overflow: hidden;
 }
 
-/* HOVER EFFECT */
-.card:hover {
-  transform: translateY(-6px);
-  box-shadow: 0 6px 18px rgba(0,0,0,0.2);
+.card img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
 }
 
 .card:hover img {
-  transform: scale(1.05);
+  transform: scale(1.08);
+}
+
+/* CONTENT */
+.card-content {
+  padding: 18px;
+}
+
+.card-content h3 {
+  color: #2e7d32;
+  font-size: 18px;
+  font-weight: 600;
+  line-height: 1.5;
 }
 
 /* MOBILE */
-@media (max-width: 600px) {
-  .card img {
-    height: 180px;
+@media (max-width: 768px) {
+
+  .header-galeri h1 {
+    font-size: 1.8rem;
   }
+
+  .header-galeri p {
+    font-size: 14px;
+  }
+
+  .card img {
+    height: 200px;
+  }
+
+  .card-content {
+    padding: 15px;
+  }
+
+  .card-content h3 {
+    font-size: 16px;
+  }
+
 }
