@@ -17,7 +17,7 @@ export default function Navbar() {
     <>
       <nav className="navbar">
         <Link to="/" className="logo">
-          <img src="/logo-tk.png" alt="Logo TK" className="logoImg" />
+          <img src="/logo-tk.png.jpeg" alt="Logo TK" className="logoImg" />
           <span className="logoText">TK <span>Siau Timur</span></span>
         </Link>
 
