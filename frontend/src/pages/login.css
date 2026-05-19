@@ -1,44 +1,244 @@
-.login-container {
-  height: 100vh;
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.loginPage {
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  display: flex;
+}
+
+/* ── KIRI ── */
+.loginLeft {
+  width: 45%;
+  background: #2e7d32;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 48px 40px;
+}
+
+.loginLogo {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  margin-bottom: 24px;
+}
+
+.loginLeft h1 {
+  font-size: 22px;
+  font-weight: 600;
+  line-height: 1.4;
+  margin-bottom: 8px;
+}
+
+.loginLeft > p {
+  font-size: 13px;
+  opacity: 0.75;
+  margin-bottom: 32px;
+}
+
+.loginLeftInfo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 260px;
+}
+
+.loginLeftItem {
+  background: rgba(255, 255, 255, 0.12);
+  border-radius: 10px;
+  padding: 10px 14px;
+  font-size: 12px;
+  text-align: left;
+  line-height: 1.5;
+}
+
+/* ── KANAN ── */
+.loginRight {
+  width: 55%;
+  background: #f4fff4;
   display: flex;
   justify-content: center;
   align-items: center;
-  background: linear-gradient(135deg, #74ebd5, #acb6e5);
-  font-family: Arial;
+  padding: 40px 24px;
 }
 
-.login-box {
+.loginBox {
   background: white;
-  padding: 40px;
-  border-radius: 15px;
-  box-shadow: 0 4px 20px rgba(0,0,0,0.2);
-  width: 300px;
+  border-radius: 20px;
+  padding: 40px 36px;
+  width: 100%;
+  max-width: 380px;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+}
+
+/* ── HEADER ── */
+.loginHeader {
   text-align: center;
+  margin-bottom: 28px;
 }
 
-.login-box h2 {
-  margin-bottom: 20px;
+.loginIcon {
+  font-size: 36px;
+  margin-bottom: 10px;
 }
 
-.login-box input {
-  width: 100%;
-  padding: 10px;
-  margin: 8px 0;
+.loginHeader h2 {
+  font-size: 20px;
+  font-weight: 600;
+  color: #1a1a1a;
+  margin-bottom: 4px;
+}
+
+.loginHeader p {
+  font-size: 13px;
+  color: #888;
+}
+
+/* ── ERROR ── */
+.loginError {
+  background: #fdecea;
+  color: #c62828;
   border-radius: 10px;
-  border: 1px solid #ccc;
+  padding: 10px 14px;
+  font-size: 13px;
+  margin-bottom: 18px;
 }
 
-.login-box button {
+/* ── FORM ── */
+.loginForm {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.formGroup label {
+  font-size: 13px;
+  font-weight: 500;
+  color: #333;
+}
+
+.inputWrapper {
+  display: flex;
+  align-items: center;
+  border: 1px solid rgba(0, 0, 0, 0.12);
+  border-radius: 10px;
+  background: #fafafa;
+  transition: border 0.2s;
+  overflow: hidden;
+}
+
+.inputWrapper:focus-within {
+  border-color: #43a047;
+  background: white;
+}
+
+.inputIcon {
+  padding: 0 12px;
+  font-size: 16px;
+}
+
+.inputWrapper input {
+  flex: 1;
+  border: none;
+  background: none;
+  padding: 11px 0;
+  font-size: 13px;
+  font-family: "Poppins", sans-serif;
+  color: #1a1a1a;
+  outline: none;
+}
+
+.inputWrapper input::placeholder {
+  color: #bbb;
+}
+
+.togglePass {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0 12px;
+  font-size: 16px;
+  line-height: 1;
+}
+
+/* ── BUTTON ── */
+.loginBtn {
   width: 100%;
-  padding: 10px;
-  margin-top: 10px;
-  background: #4caf50;
+  padding: 12px;
+  background: #2e7d32;
   color: white;
   border: none;
   border-radius: 10px;
+  font-size: 14px;
+  font-weight: 600;
+  font-family: "Poppins", sans-serif;
   cursor: pointer;
+  transition: background 0.2s, transform 0.1s;
+  margin-top: 4px;
 }
 
-.login-box button:hover {
-  background: #45a049;
+.loginBtn:hover:not(:disabled) {
+  background: #1b5e20;
+  transform: translateY(-1px);
+}
+
+.loginBtn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* ── FOOTER ── */
+.loginFooter {
+  text-align: center;
+  font-size: 11px;
+  color: #bbb;
+  margin-top: 24px;
+}
+
+/* ── RESPONSIVE ── */
+@media (max-width: 768px) {
+  .loginPage {
+    flex-direction: column;
+  }
+
+  .loginLeft {
+    width: 100%;
+    padding: 36px 24px;
+  }
+
+  .loginLogo {
+    width: 80px;
+    height: 80px;
+  }
+
+  .loginLeft h1 {
+    font-size: 18px;
+  }
+
+  .loginRight {
+    width: 100%;
+    padding: 32px 20px;
+  }
+
+  .loginBox {
+    padding: 28px 24px;
+  }
 }
