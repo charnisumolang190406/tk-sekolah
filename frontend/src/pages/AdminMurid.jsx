@@ -41,6 +41,7 @@ export default function AdminMurid() {
         alert("Murid berhasil ditambahkan");
       }
 
+      // RESET
       setNama("");
       setUmur("");
       setKelas("");
@@ -212,7 +213,12 @@ const styles = {
     fontSize: "13px",
     outline: "none",
     fontFamily: "Poppins, sans-serif",
-    background: "#fafafa",
+
+    background: "#ffffff",
+    color: "#1a1a1a",
+
+    transition: "0.2s",
+    boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
   },
 
   button: {
@@ -240,6 +246,8 @@ const styles = {
     borderRadius: "14px",
     padding: "18px",
     transition: "0.2s",
+    boxShadow:
+      "0 2px 8px rgba(0,0,0,0.04)",
   },
 
   cardTitle: {
