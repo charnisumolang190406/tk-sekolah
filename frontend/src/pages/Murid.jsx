@@ -1,4 +1,3 @@
-```jsx
 import { useEffect, useState } from "react";
 import api from "../services/api";
 
@@ -41,25 +40,38 @@ export default function Murid() {
           </h2>
         </div>
 
+        {/* GRID */}
         <div style={styles.grid}>
           {murid.map((m) => (
             <div
               key={m.id}
               style={styles.card}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform =
+                  "translateY(-4px)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform =
+                  "translateY(0)";
+              }}
             >
+              {/* AVATAR */}
               <div style={styles.avatar}>
                 {m.nama.charAt(0)}
               </div>
 
+              {/* NAMA */}
               <h3 style={styles.cardTitle}>
                 {m.nama}
               </h3>
 
+              {/* INFO */}
               <div style={styles.infoBox}>
                 <p style={styles.cardText}>
                   <span style={styles.label}>
                     Umur
                   </span>
+
                   {m.umur} Tahun
                 </p>
 
@@ -67,6 +79,7 @@ export default function Murid() {
                   <span style={styles.label}>
                     Kelas
                   </span>
+
                   {m.kelas}
                 </p>
               </div>
@@ -93,13 +106,13 @@ const styles = {
     color: "white",
     textAlign: "center",
     padding: "55px 24px 70px",
-    borderRadius: "0 0 28px 28px",
+    borderRadius: "0 0 30px 30px",
   },
 
   badge: {
     display: "inline-block",
     background:
-      "rgba(255,255,255,0.15)",
+      "rgba(255,255,255,0.16)",
     padding: "6px 14px",
     borderRadius: "20px",
     fontSize: "11px",
@@ -152,30 +165,43 @@ const styles = {
 
   /* CARD */
   card: {
-    background: "white",
-    borderRadius: "18px",
+    background:
+      "linear-gradient(180deg,#ffffff,#f9fff9)",
+
+    borderRadius: "20px",
     padding: "22px",
-    border:
-      "1px solid rgba(0,0,0,0.05)",
+
+    border: "1px solid #e8f5e9",
+
     boxShadow:
-      "0 4px 14px rgba(0,0,0,0.05)",
-    transition: "0.2s",
+      "0 6px 18px rgba(0,0,0,0.05)",
+
+    transition: "0.25s ease",
   },
 
+  /* AVATAR */
   avatar: {
-    width: "52px",
-    height: "52px",
-    borderRadius: "50%",
-    background: "#e8f5e9",
-    color: "#2e7d32",
+    width: "56px",
+    height: "56px",
+
+    borderRadius: "16px",
+
+    background:
+      "linear-gradient(135deg,#43a047,#66bb6a)",
+
+    color: "white",
+
     display: "flex",
     alignItems: "center",
     justifyContent: "center",
+
     fontSize: "20px",
     fontWeight: "600",
+
     marginBottom: "16px",
   },
 
+  /* TITLE */
   cardTitle: {
     fontSize: "16px",
     fontWeight: "600",
@@ -183,6 +209,7 @@ const styles = {
     marginBottom: "14px",
   },
 
+  /* INFO */
   infoBox: {
     display: "flex",
     flexDirection: "column",
@@ -193,10 +220,13 @@ const styles = {
     fontSize: "13px",
     color: "#555",
     lineHeight: "1.6",
+
     display: "flex",
     justifyContent: "space-between",
+
     borderBottom:
       "1px solid rgba(0,0,0,0.05)",
+
     paddingBottom: "6px",
   },
 
@@ -205,4 +235,3 @@ const styles = {
     fontWeight: "600",
   },
 };
-```
