@@ -11,7 +11,7 @@ export default function Pengumuman() {
   return (
     <div style={styles.page}>
 
-      <h2 style={styles.title}>Pengumuman Sekolah</h2>
+      <h3 style={styles.title}>Pengumuman Sekolah</h3>
 
       <div style={styles.grid}>
         {data.map((item) => (
