@@ -12,49 +12,171 @@ export default function Guru() {
 
   return (
     <div style={styles.page}>
+      {/* CONTENT */}
+      <div style={styles.content}>
+        <div style={styles.sectionHeader}>
+          <p style={styles.sectionLabel}>
+            DATA PENGAJAR
+          </p>
 
-      <h1 style={styles.title}>👩‍🏫 Data Guru</h1>
+          <h2 style={styles.sectionTitle}>
+            Daftar Guru
+          </h2>
+        </div>
 
-      <div style={styles.grid}>
-        {guru.map((g) => (
-          <div key={g.id} style={styles.card}>
-            <h3>👩‍🏫 {g.nama}</h3>
-            <p>📚 Mapel: {g.mapel}</p>
-          </div>
-        ))}
+        {/* GRID */}
+        <div style={styles.grid}>
+          {guru.map((g) => (
+            <div
+              key={g.id}
+              style={styles.card}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.transform =
+                  "translateY(-4px)";
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.transform =
+                  "translateY(0)";
+              }}
+            >
+              {/* AVATAR */}
+              <div style={styles.avatar}>
+                {g.nama.charAt(0)}
+              </div>
+
+              {/* NAMA */}
+              <h3 style={styles.cardTitle}>
+                👩‍🏫 {g.nama}
+              </h3>
+
+              {/* INFO */}
+              <div style={styles.infoBox}>
+                <p style={styles.cardText}>
+                  <span style={styles.label}>
+                    📚 Mata Pelajaran
+                  </span>
+
+                  {g.mapel}
+                </p>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
-
     </div>
   );
 }
 
 /* ================= STYLE ================= */
+
 const styles = {
   page: {
-    padding: "30px",
-    background: "#f4fff4",
     minHeight: "100vh",
-    fontFamily: "Arial",
+    background: "#f4fff4",
+    fontFamily: "Poppins, sans-serif",
   },
 
-  title: {
-    textAlign: "center",
-    color: "#2e7d32",
-    marginBottom: "20px",
+  /* CONTENT */
+  content: {
+    padding: "28px 22px",
   },
 
+  sectionHeader: {
+    marginBottom: "18px",
+  },
+
+  sectionLabel: {
+    fontSize: "11px",
+    color: "#43a047",
+    fontWeight: "600",
+    letterSpacing: "0.5px",
+    marginBottom: "4px",
+  },
+
+  sectionTitle: {
+    fontSize: "19px",
+    color: "#1a1a1a",
+    fontWeight: "600",
+  },
+
+  /* GRID */
   grid: {
     display: "grid",
-    gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))",
-    gap: "15px",
+    gridTemplateColumns:
+      "repeat(auto-fit,minmax(200px,1fr))",
+    gap: "14px",
   },
 
+  /* CARD */
   card: {
-    background: "white",
-    padding: "20px",
-    borderRadius: "12px",
-    textAlign: "center",
-    boxShadow: "0 3px 12px rgba(0,0,0,0.1)",
-    transition: "0.3s",
+    background:
+      "linear-gradient(180deg,#ffffff,#f9fff9)",
+
+    borderRadius: "18px",
+    padding: "18px",
+
+    border: "1px solid #e8f5e9",
+
+    boxShadow:
+      "0 4px 14px rgba(0,0,0,0.05)",
+
+    transition: "0.25s ease",
+  },
+
+  /* AVATAR */
+  avatar: {
+    width: "48px",
+    height: "48px",
+
+    borderRadius: "14px",
+
+    background:
+      "linear-gradient(135deg,#43a047,#66bb6a)",
+
+    color: "white",
+
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+
+    fontSize: "17px",
+    fontWeight: "600",
+
+    marginBottom: "14px",
+  },
+
+  /* TITLE */
+  cardTitle: {
+    fontSize: "15px",
+    fontWeight: "600",
+    color: "#1a1a1a",
+    marginBottom: "12px",
+  },
+
+  /* INFO */
+  infoBox: {
+    display: "flex",
+    flexDirection: "column",
+    gap: "8px",
+  },
+
+  cardText: {
+    fontSize: "12px",
+    color: "#555",
+    lineHeight: "1.6",
+
+    display: "flex",
+    flexDirection: "column",
+    gap: "6px",
+
+    borderBottom:
+      "1px solid rgba(0,0,0,0.05)",
+
+    paddingBottom: "5px",
+  },
+
+  label: {
+    color: "#2e7d32",
+    fontWeight: "600",
   },
 };
