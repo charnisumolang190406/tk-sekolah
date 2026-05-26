@@ -95,7 +95,7 @@ export default function Home() {
             <div className="infoIcon">📘</div>
             <div>
               <div className="infoLabel">Jenjang</div>
-              <div className="infoValue">Taman Kanak-Kanak (TK) — Usia 4–6 Tahun</div>
+              <div className="infoValue">Taman Kanak-Kanak (TK)</div>
             </div>
           </div>
           <div className="infoCard">
