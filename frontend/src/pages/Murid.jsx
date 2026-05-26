@@ -12,22 +12,6 @@ export default function Murid() {
 
   return (
     <div style={styles.page}>
-      {/* HERO */}
-      <div style={styles.hero}>
-        <div style={styles.badge}>
-          TK SEKOLAH
-        </div>
-
-        <h1 style={styles.heroTitle}>
-          Data Murid
-        </h1>
-
-        <p style={styles.heroText}>
-          Informasi daftar murid aktif
-          pada TK Sekolah.
-        </p>
-      </div>
-
       {/* CONTENT */}
       <div style={styles.content}>
         <div style={styles.sectionHeader}>
@@ -62,14 +46,14 @@ export default function Murid() {
 
               {/* NAMA */}
               <h3 style={styles.cardTitle}>
-                {m.nama}
+                👶 {m.nama}
               </h3>
 
               {/* INFO */}
               <div style={styles.infoBox}>
                 <p style={styles.cardText}>
                   <span style={styles.label}>
-                    Umur
+                    🎂 Umur
                   </span>
 
                   {m.umur} Tahun
@@ -77,7 +61,7 @@ export default function Murid() {
 
                 <p style={styles.cardText}>
                   <span style={styles.label}>
-                    Kelas
+                    🏫 Kelas
                   </span>
 
                   {m.kelas}
@@ -98,38 +82,6 @@ const styles = {
     minHeight: "100vh",
     background: "#f4fff4",
     fontFamily: "Poppins, sans-serif",
-  },
-
-  /* HERO */
-  hero: {
-    background: "#2e7d32",
-    color: "white",
-    textAlign: "center",
-    padding: "55px 24px 70px",
-    borderRadius: "0 0 30px 30px",
-  },
-
-  badge: {
-    display: "inline-block",
-    background:
-      "rgba(255,255,255,0.16)",
-    padding: "6px 14px",
-    borderRadius: "20px",
-    fontSize: "11px",
-    marginBottom: "16px",
-    letterSpacing: "0.5px",
-  },
-
-  heroTitle: {
-    fontSize: "28px",
-    fontWeight: "600",
-    marginBottom: "10px",
-  },
-
-  heroText: {
-    fontSize: "13px",
-    opacity: "0.85",
-    lineHeight: "1.7",
   },
 
   /* CONTENT */
