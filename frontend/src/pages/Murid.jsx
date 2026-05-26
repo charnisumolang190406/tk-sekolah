@@ -86,11 +86,11 @@ const styles = {
 
   /* CONTENT */
   content: {
-    padding: "30px 24px",
+    padding: "28px 22px",
   },
 
   sectionHeader: {
-    marginBottom: "20px",
+    marginBottom: "18px",
   },
 
   sectionLabel: {
@@ -102,7 +102,7 @@ const styles = {
   },
 
   sectionTitle: {
-    fontSize: "20px",
+    fontSize: "19px",
     color: "#1a1a1a",
     fontWeight: "600",
   },
@@ -111,8 +111,8 @@ const styles = {
   grid: {
     display: "grid",
     gridTemplateColumns:
-      "repeat(auto-fit,minmax(230px,1fr))",
-    gap: "16px",
+      "repeat(auto-fit,minmax(200px,1fr))",
+    gap: "14px",
   },
 
   /* CARD */
@@ -120,23 +120,23 @@ const styles = {
     background:
       "linear-gradient(180deg,#ffffff,#f9fff9)",
 
-    borderRadius: "20px",
-    padding: "22px",
+    borderRadius: "18px",
+    padding: "18px",
 
     border: "1px solid #e8f5e9",
 
     boxShadow:
-      "0 6px 18px rgba(0,0,0,0.05)",
+      "0 4px 14px rgba(0,0,0,0.05)",
 
     transition: "0.25s ease",
   },
 
   /* AVATAR */
   avatar: {
-    width: "56px",
-    height: "56px",
+    width: "48px",
+    height: "48px",
 
-    borderRadius: "16px",
+    borderRadius: "14px",
 
     background:
       "linear-gradient(135deg,#43a047,#66bb6a)",
@@ -147,29 +147,29 @@ const styles = {
     alignItems: "center",
     justifyContent: "center",
 
-    fontSize: "20px",
+    fontSize: "17px",
     fontWeight: "600",
 
-    marginBottom: "16px",
+    marginBottom: "14px",
   },
 
   /* TITLE */
   cardTitle: {
-    fontSize: "16px",
+    fontSize: "15px",
     fontWeight: "600",
     color: "#1a1a1a",
-    marginBottom: "14px",
+    marginBottom: "12px",
   },
 
   /* INFO */
   infoBox: {
     display: "flex",
     flexDirection: "column",
-    gap: "10px",
+    gap: "8px",
   },
 
   cardText: {
-    fontSize: "13px",
+    fontSize: "12px",
     color: "#555",
     lineHeight: "1.6",
 
@@ -179,7 +179,7 @@ const styles = {
     borderBottom:
       "1px solid rgba(0,0,0,0.05)",
 
-    paddingBottom: "6px",
+    paddingBottom: "5px",
   },
 
   label: {
