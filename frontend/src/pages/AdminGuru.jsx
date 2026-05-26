@@ -65,7 +65,16 @@ export default function AdminGuru() {
 
   return (
     <div style={styles.page}>
-      <h1 style={styles.title}>👩‍🏫 Admin Guru</h1>
+      {/* HEADER */}
+      <div style={styles.header}>
+        <h1 style={styles.title}>
+          Admin Guru
+        </h1>
+
+        <p style={styles.subtitle}>
+          Kelola data guru dan mata pelajaran
+        </p>
+      </div>
 
       {/* FORM */}
       <form onSubmit={tambah} style={styles.form}>
@@ -86,7 +95,7 @@ export default function AdminGuru() {
         />
 
         <button style={styles.button}>
-          + Tambah Guru
+          Tambah Guru
         </button>
       </form>
 
@@ -94,15 +103,19 @@ export default function AdminGuru() {
       <div style={styles.grid}>
         {data.map((g) => (
           <div key={g.id} style={styles.card}>
-            <h3>👩‍🏫 {g.nama}</h3>
+            <h3 style={styles.cardTitle}>
+              {g.nama}
+            </h3>
 
-            <p>📚 {g.mapel}</p>
+            <p style={styles.cardText}>
+              Mata Pelajaran: {g.mapel}
+            </p>
 
             <button
               onClick={() => hapus(g.id)}
               style={styles.deleteBtn}
             >
-              🗑 Hapus
+              Hapus
             </button>
           </div>
         ))}
@@ -111,71 +124,114 @@ export default function AdminGuru() {
   );
 }
 
-/* ================= STYLES ================= */
+/* ================= STYLE ================= */
 
 const styles = {
   page: {
-    padding: "30px",
+    padding: "24px",
     background: "#f4fff4",
     minHeight: "100vh",
-    fontFamily: "Arial",
+    fontFamily: "Poppins, sans-serif",
+  },
+
+  header: {
+    marginBottom: "22px",
   },
 
   title: {
-    textAlign: "center",
-    color: "#2e7d32",
-    marginBottom: "20px",
+    fontSize: "24px",
+    fontWeight: "600",
+    color: "#1a1a1a",
+    marginBottom: "4px",
+  },
+
+  subtitle: {
+    fontSize: "13px",
+    color: "#666",
+    lineHeight: "1.6",
   },
 
   form: {
-    display: "flex",
-    gap: "10px",
-    justifyContent: "center",
-    flexWrap: "wrap",
-    marginBottom: "25px",
+    background: "white",
+    border: "1px solid rgba(0,0,0,0.06)",
+    borderRadius: "16px",
+    padding: "18px",
+    marginBottom: "24px",
+
+    display: "grid",
+    gridTemplateColumns:
+      "repeat(auto-fit,minmax(200px,1fr))",
+    gap: "12px",
   },
 
   input: {
-    padding: "10px",
-    borderRadius: "8px",
-    border: "1px solid #ccc",
+    padding: "11px 13px",
+    borderRadius: "10px",
+    border: "1px solid #dcdcdc",
+    fontSize: "13px",
     outline: "none",
+    fontFamily: "Poppins, sans-serif",
+
+    background: "#ffffff",
+    color: "#1a1a1a",
+
+    transition: "0.2s",
+    boxShadow:
+      "0 1px 3px rgba(0,0,0,0.04)",
   },
 
   button: {
-    background: "#4CAF50",
+    background: "#2e7d32",
     color: "white",
     border: "none",
-    padding: "10px 15px",
-    borderRadius: "8px",
+    borderRadius: "10px",
+    padding: "11px 16px",
+    fontSize: "13px",
+    fontWeight: "600",
     cursor: "pointer",
-    fontWeight: "bold",
+    transition: "0.2s",
   },
 
   grid: {
     display: "grid",
     gridTemplateColumns:
-      "repeat(auto-fit, minmax(200px, 1fr))",
-    gap: "15px",
+      "repeat(auto-fit, minmax(220px,1fr))",
+    gap: "14px",
   },
 
   card: {
     background: "white",
-    padding: "20px",
-    borderRadius: "12px",
-    textAlign: "center",
-    boxShadow: "0 3px 12px rgba(0,0,0,0.1)",
-    transition: "0.3s",
+    border: "1px solid rgba(0,0,0,0.06)",
+    borderRadius: "14px",
+    padding: "18px",
+    transition: "0.2s",
+    boxShadow:
+      "0 2px 8px rgba(0,0,0,0.04)",
+  },
+
+  cardTitle: {
+    fontSize: "15px",
+    fontWeight: "600",
+    color: "#1a1a1a",
+    marginBottom: "10px",
+  },
+
+  cardText: {
+    fontSize: "13px",
+    color: "#555",
+    marginBottom: "14px",
+    lineHeight: "1.5",
   },
 
   deleteBtn: {
-    marginTop: "10px",
-    background: "#e53935",
-    color: "white",
+    width: "100%",
+    background: "#ffebee",
+    color: "#c62828",
     border: "none",
-    padding: "8px 12px",
-    borderRadius: "8px",
+    borderRadius: "9px",
+    padding: "10px",
+    fontSize: "12px",
+    fontWeight: "600",
     cursor: "pointer",
-    fontWeight: "bold",
   },
 };
