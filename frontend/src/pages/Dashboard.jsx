@@ -54,12 +54,34 @@ export default function Dashboard() {
       <h2 className="subTitle">⚙️ Menu Admin</h2>
 
       <div className="menu">
+        <Link to="/admin/murid" className="menuBtn">
+          👶 Kelola Murid
+        </Link>
 
-        <Link to="/admin/murid" className="menuBtn">👶 Kelola Murid</Link>
-        <Link to="/admin/guru" className="menuBtn">👩‍🏫 Kelola Guru</Link>
-        <Link to="/admin/galeri" className="menuBtn">🖼️ Kelola Galeri</Link>
-        <Link to="/admin/pengumuman" className="menuBtn">📢 Kelola Pengumuman</Link>
+        <Link to="/admin/guru" className="menuBtn">
+          👩‍🏫 Kelola Guru
+        </Link>
 
+        <Link to="/admin/galeri" className="menuBtn">
+          🖼️ Kelola Galeri
+        </Link>
+
+        <Link to="/admin/pengumuman" className="menuBtn">
+          📢 Kelola Pengumuman
+        </Link>
+      </div>
+
+      {/* FOOTER */}
+      <div className="footerInfo">
+        <p>
+          © 2025 TK Negeri Pembina Siau Timur ·
+          Admin Dashboard System
+        </p>
+
+        <span>
+          Dibuat untuk pengelolaan data murid,
+          guru, galeri, dan pengumuman sekolah
+        </span>
       </div>
 
     </div>
