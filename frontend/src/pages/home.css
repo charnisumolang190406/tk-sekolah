@@ -13,27 +13,12 @@
 }
 
 /* ── HERO ── */
-.hero{
-  background:
-    linear-gradient(
-      rgba(46,125,50,0.65),
-      rgba(46,125,50,0.65)
-    ),
-    url("https://res.cloudinary.com/dgigafrhp/image/upload/v1779162487/tk-sekolah-galeri/o48cwpratmbanhdpno7w.jpg");
-
-  background-size: cover;
-  background-position: center;
-  background-repeat: no-repeat;
-
+.hero {
+  background: #2e7d32;
   color: white;
   text-align: center;
-  padding: 100px 25px;
-  min-height: 500px;
-  border-radius: 0 0 35px 35px;
-
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
+  padding: 60px 24px 72px;
+  border-radius: 0 0 32px 32px;
 }
 
 .heroBadge {
