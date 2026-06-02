@@ -1,328 +1,339 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap');
 
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
 }
 
-.home {
-  font-family: "Poppins", sans-serif;
-  background: #f4fff4;
-  min-height: 100vh;
+body{
+  background:#f4fff4;
 }
 
-/* ── HERO ── */
-.hero {
-  background: #2e7d32;
-  color: white;
-  text-align: center;
-  padding: 60px 24px 72px;
-  border-radius: 0 0 32px 32px;
+.home{
+  font-family:"Poppins",sans-serif;
+  min-height:100vh;
+  background:#f4fff4;
 }
 
-.heroBadge {
-  display: inline-block;
-  background: rgba(255, 255, 255, 0.18);
-  color: white;
-  font-size: 12px;
-  padding: 5px 16px;
-  border-radius: 20px;
-  margin-bottom: 18px;
+/* ================= HERO ================= */
+
+.hero{
+  background-size:cover;
+  background-position:center;
+  background-repeat:no-repeat;
+  color:white;
+  text-align:center;
+  padding:80px 25px;
+  border-radius:0 0 35px 35px;
 }
 
-.hero h1 {
-  font-size: 26px;
-  font-weight: 600;
-  line-height: 1.35;
-  margin-bottom: 12px;
+.heroBadge{
+  display:inline-block;
+  background:rgba(255,255,255,0.2);
+  padding:8px 18px;
+  border-radius:30px;
+  font-size:13px;
+  margin-bottom:20px;
 }
 
-.hero p {
-  font-size: 13px;
-  opacity: 0.82;
-  line-height: 1.7;
-  margin-bottom: 28px;
+.hero h1{
+  font-size:40px;
+  margin-bottom:15px;
+  font-weight:700;
 }
 
-.btnGroup {
-  display: flex;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: 10px;
+.hero p{
+  max-width:600px;
+  margin:auto;
+  line-height:1.7;
+  margin-bottom:30px;
+  opacity:0.95;
 }
 
-.btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: white;
-  color: #2e7d32;
-  padding: 9px 18px;
-  border-radius: 10px;
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 600;
-  transition: background 0.15s;
+.btnGroup{
+  display:flex;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:12px;
 }
 
-.btn:hover {
-  background: #f1f8e9;
+.btn,
+.btnOutline{
+  text-decoration:none;
+  padding:12px 20px;
+  border-radius:12px;
+  transition:0.3s;
+  font-weight:600;
 }
 
-.btnOutline {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(255, 255, 255, 0.15);
-  color: white;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  padding: 9px 18px;
-  border-radius: 10px;
-  text-decoration: none;
-  font-size: 13px;
-  font-weight: 500;
-  transition: background 0.15s;
+.btn{
+  background:white;
+  color:#2e7d32;
 }
 
-.btnOutline:hover {
-  background: rgba(255, 255, 255, 0.25);
+.btn:hover{
+  transform:translateY(-2px);
 }
 
-/* ── SECTION ── */
-.section {
-  padding: 32px 24px;
+.btnOutline{
+  border:1px solid rgba(255,255,255,0.5);
+  color:white;
 }
 
-.sectionLabel {
-  font-size: 11px;
-  font-weight: 600;
-  color: #43a047;
-  letter-spacing: 0.6px;
-  text-transform: uppercase;
-  margin-bottom: 4px;
+.btnOutline:hover{
+  background:rgba(255,255,255,0.15);
 }
 
-.sectionTitle {
-  font-size: 18px;
-  font-weight: 600;
-  color: #1a1a1a;
-  margin-bottom: 20px;
+/* ================= STATISTIK ================= */
+
+.statsSection{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:20px;
+  padding:30px 24px;
+  margin-top:-40px;
 }
 
-.divider {
-  height: 1px;
-  background: rgba(0, 0, 0, 0.06);
-  margin: 0 24px;
+.statCard{
+  background:white;
+  padding:25px;
+  border-radius:18px;
+  text-align:center;
+  box-shadow:0 8px 25px rgba(0,0,0,0.06);
 }
 
-/* ── INFO SEKOLAH ── */
-.infoGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
-  gap: 12px;
+.statCard h2{
+  color:#2e7d32;
+  font-size:35px;
+  margin-bottom:8px;
 }
 
-.infoCard {
-  background: white;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 14px;
-  padding: 16px;
-  display: flex;
-  align-items: flex-start;
-  gap: 12px;
-  transition: transform 0.2s;
+.statCard p{
+  color:#666;
+  font-size:14px;
 }
 
-.infoCard:hover {
-  transform: translateY(-3px);
+/* ================= SECTION ================= */
+
+.section{
+  padding:35px 24px;
 }
 
-.infoIcon {
-  font-size: 22px;
-  min-width: 32px;
+.sectionLabel{
+  font-size:12px;
+  color:#43a047;
+  text-transform:uppercase;
+  font-weight:600;
+  margin-bottom:5px;
 }
 
-.infoLabel {
-  font-size: 11px;
-  color: #43a047;
-  font-weight: 600;
-  text-transform: uppercase;
-  letter-spacing: 0.4px;
-  margin-bottom: 3px;
+.sectionTitle{
+  font-size:24px;
+  color:#222;
+  margin-bottom:22px;
+  font-weight:700;
 }
 
-.infoValue {
-  font-size: 13px;
-  color: #333;
-  line-height: 1.5;
+.divider{
+  height:1px;
+  background:#e5e5e5;
+  margin:0 24px;
 }
 
-/* ── QUOTE ── */
-.quoteBox {
-  background: white;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 16px;
-  padding: 24px;
-  position: relative;
+/* ================= INFO ================= */
+
+.infoGrid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+  gap:15px;
 }
 
-.quoteIcon {
-  font-size: 40px;
-  color: #c8e6c9;
-  line-height: 1;
-  margin-bottom: 8px;
+.infoCard{
+  background:white;
+  padding:18px;
+  border-radius:15px;
+  display:flex;
+  gap:14px;
+  align-items:flex-start;
+  box-shadow:0 4px 12px rgba(0,0,0,0.05);
 }
 
-.quoteText {
-  font-size: 15px;
-  color: #1a1a1a;
-  line-height: 1.7;
-  font-style: italic;
-  margin-bottom: 10px;
+.infoIcon{
+  font-size:24px;
 }
 
-.quoteAuthor {
-  font-size: 13px;
-  color: #43a047;
-  font-weight: 600;
-  margin-bottom: 14px;
+.infoLabel{
+  font-size:12px;
+  color:#43a047;
+  font-weight:600;
+  margin-bottom:4px;
 }
 
-.refreshBtn {
-  font-size: 12px;
-  color: #43a047;
-  background: none;
-  border: none;
-  cursor: pointer;
-  padding: 0;
-  font-family: "Poppins", sans-serif;
-  font-weight: 500;
+.infoValue{
+  font-size:14px;
+  color:#444;
+  line-height:1.6;
 }
 
-.refreshBtn:hover {
-  color: #2e7d32;
+/* ================= KEUNGGULAN ================= */
+
+.advantageGrid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+  gap:15px;
 }
 
-/* ── BUKU ── */
-.booksGrid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-  gap: 12px;
+.advantageCard{
+  background:white;
+  padding:22px;
+  border-radius:15px;
+  text-align:center;
+  font-weight:600;
+  color:#2e7d32;
+  box-shadow:0 4px 12px rgba(0,0,0,0.05);
+  transition:0.3s;
 }
 
-.bookCard {
-  background: white;
-  border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 12px;
-  padding: 16px 14px;
-  display: flex;
-  flex-direction: column;
-  gap: 5px;
-  transition: transform 0.2s;
+.advantageCard:hover{
+  transform:translateY(-4px);
 }
 
-.bookCard:hover {
-  transform: translateY(-3px);
+/* ================= QUOTE ================= */
+
+.quoteBox{
+  background:white;
+  padding:25px;
+  border-radius:18px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.05);
 }
 
-.bookEmoji {
-  font-size: 24px;
-  margin-bottom: 4px;
+.quoteIcon{
+  font-size:45px;
+  color:#c8e6c9;
 }
 
-.bookTitle {
-  font-size: 13px;
-  font-weight: 600;
-  color: #1a1a1a;
-  line-height: 1.4;
+.quoteText{
+  font-size:16px;
+  line-height:1.8;
+  margin:10px 0;
+  font-style:italic;
 }
 
-.bookAuthor {
-  font-size: 12px;
-  color: #888;
+.quoteAuthor{
+  color:#43a047;
+  font-weight:600;
+  margin-bottom:12px;
 }
 
-.bookTag {
-  font-size: 11px;
-  color: #2e7d32;
-  font-weight: 600;
-  background: #e8f5e9;
-  display: inline-block;
-  padding: 2px 8px;
-  border-radius: 20px;
-  margin-top: 4px;
+.refreshBtn{
+  border:none;
+  background:none;
+  cursor:pointer;
+  color:#2e7d32;
+  font-weight:600;
 }
 
-/* ── FAKTA ── */
-.factBox {
-  background: #e8f5e9;
-  border-radius: 16px;
-  padding: 24px;
-  display: flex;
-  align-items: flex-start;
-  gap: 20px;
+/* ================= BUKU ================= */
+
+.booksGrid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+  gap:15px;
 }
 
-.factNum {
-  font-size: 38px;
-  font-weight: 700;
-  color: #2e7d32;
-  min-width: 80px;
-  line-height: 1;
+.bookCard{
+  background:white;
+  padding:18px;
+  border-radius:15px;
+  box-shadow:0 4px 12px rgba(0,0,0,0.05);
 }
 
-.factContent {
-  flex: 1;
+.bookEmoji{
+  font-size:28px;
+  margin-bottom:8px;
 }
 
-.factText {
-  font-size: 14px;
-  color: #1b5e20;
-  line-height: 1.6;
-  margin-bottom: 12px;
+.bookTitle{
+  font-weight:600;
+  margin-bottom:5px;
 }
 
-/* ── FOOTER INFO ── */
-.footerInfo {
-  background: #2e7d32;
-  color: rgba(255, 255, 255, 0.75);
-  text-align: center;
-  padding: 20px 24px;
-  font-size: 12px;
-  line-height: 1.6;
-  margin-top: 8px;
+.bookAuthor{
+  font-size:13px;
+  color:#777;
 }
 
-/* ── RESPONSIVE ── */
-@media (max-width: 600px) {
-  .hero h1 {
-    font-size: 20px;
+.bookTag{
+  margin-top:10px;
+  display:inline-block;
+  background:#e8f5e9;
+  color:#2e7d32;
+  padding:4px 10px;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:600;
+}
+
+/* ================= FAKTA ================= */
+
+.factBox{
+  background:#e8f5e9;
+  padding:25px;
+  border-radius:18px;
+  display:flex;
+  gap:20px;
+  align-items:flex-start;
+}
+
+.factNum{
+  font-size:45px;
+  font-weight:700;
+  color:#2e7d32;
+}
+
+.factContent{
+  flex:1;
+}
+
+.factText{
+  line-height:1.8;
+  margin-bottom:10px;
+}
+
+/* ================= FOOTER ================= */
+
+.footerInfo{
+  background:#2e7d32;
+  color:white;
+  text-align:center;
+  padding:30px 20px;
+  margin-top:30px;
+}
+
+.footerInfo p{
+  margin:5px 0;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media(max-width:768px){
+
+  .hero h1{
+    font-size:28px;
   }
 
-  .hero {
-    padding: 48px 20px 60px;
+  .statsSection{
+    margin-top:0;
+    padding-top:20px;
   }
 
-  .section {
-    padding: 24px 16px;
+  .factBox{
+    flex-direction:column;
   }
 
-  .divider {
-    margin: 0 16px;
+  .factNum{
+    font-size:35px;
   }
 
-  .factBox {
-    flex-direction: column;
-    gap: 10px;
-  }
-
-  .factNum {
-    font-size: 30px;
-    min-width: unset;
-  }
-
-  .infoGrid {
-    grid-template-columns: 1fr;
-  }
 }
